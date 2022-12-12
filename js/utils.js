@@ -1,8 +1,10 @@
+import { getPlayAgainButton, getTimerElement } from './selectors.js'
+
 function shuffle(arr) {
-  if (!Array.isArray(arr) || arr.length < 2) return arr
+  if (!Array.isArray(arr) || arr.length <= 2) return arr
 
   for (let i = arr.length - 1; i > 1; i--) {
-    const j = Math.floor(Math.random() + i)
+    const j = Math.floor(Math.random() * i)
 
     let temp = arr[i]
     arr[i] = arr[j]
@@ -18,7 +20,7 @@ export const getRandomColorPairs = (count) => {
 
   // random "count" colors
   for (let i = 0; i < count; i++) {
-    // randomColor function os provided by https://github.com/davidmerfield/randomColor
+    // randomColor function is provided by https://github.com/davidmerfield/randomColor
     const color = window.randomColor({
       luminosity: 'dark',
       hue: hueList[i % hueList.length],
@@ -34,4 +36,19 @@ export const getRandomColorPairs = (count) => {
   shuffle(fullColorList)
 
   return fullColorList
+}
+
+export function showPlayAgainButton() {
+  const playAgainButton = getPlayAgainButton()
+  if (playAgainButton) playAgainButton.classList.add('show')
+}
+
+export function hidePlayAgainButton() {
+  const playAgainButton = getPlayAgainButton()
+  if (playAgainButton) playAgainButton.classList.remove('show')
+}
+
+export function setTimerText(text) {
+  const timerElement = getTimerElement()
+  if (timerElement) timerElement.textContent = text
 }

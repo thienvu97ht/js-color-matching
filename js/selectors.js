@@ -19,5 +19,5 @@ export function getColorListElement() {
 }
 
 export function getInActiveColorList() {
-  return document.querySelectorAll('#colorList ? li:not(.active)')
+  return document.querySelectorAll('#colorList > li:not(.active)')
 }
