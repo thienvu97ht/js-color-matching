@@ -17,7 +17,7 @@ import {
 let selections = []
 let gameStatus = GAME_STATUS.PLAYING
 let timer = createTimer({
-  seconds: 5,
+  seconds: 30,
   onChange: handleSecondChange,
   onFinish: handleTimerFinish,
 })
@@ -33,6 +33,7 @@ function handleTimerFinish() {
   // end game
   gameStatus = GAME_STATUS.FINISHED
   setTimerText('GAME OVER! 😂')
+  showPlayAgainButton()
 }
 
 // TODOs
